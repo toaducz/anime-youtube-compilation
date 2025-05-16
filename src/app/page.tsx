@@ -24,7 +24,7 @@ export default function VideosPage() {
   const [selectedUrl, setSelectedUrl] = useState<string | null>(null);
   const [selectedVideoTitle, setSelectedVideoTitle] = useState<string>('');
   const [expandedPlaylists, setExpandedPlaylists] = useState<Record<string, boolean>>({});
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
   useEffect(() => {
     const csvFiles = [
@@ -104,7 +104,7 @@ export default function VideosPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex flex-col md:flex-row transition-colors duration-300">
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex flex-col md:flex-row transition-colors duration-300 scale-95">
       {/* Sidebar for Playlists */}
       <div className="w-full md:w-1/3 lg:w-1/4 bg-white dark:bg-gray-800 shadow-lg p-6 overflow-y-auto max-h-screen relative">
         <div className="flex justify-between items-center mb-6">
