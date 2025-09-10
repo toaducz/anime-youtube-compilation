@@ -29,6 +29,7 @@ export default function VideosPage() {
   useEffect(() => {
     const csvFiles = [
       'musevn.csv',
+      'anionevietnam.csv'
       // Add more CSV files here, e.g.:
       // 'additional_videos.csv',
       // 'another_playlist.csv',
