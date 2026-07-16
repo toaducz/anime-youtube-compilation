@@ -1,0 +1,10 @@
+{
+  "date": "2026-07-16",
+  "findings": {
+    "font_stack": "Geist + Geist Mono",
+    "palette": "Simple custom properties background/foreground",
+    "motion": "motion-cut",
+    "spacing": "default tailwind v4",
+    "framework": "Next.js 15.3.2"
+  }
+}

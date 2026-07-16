@@ -1,48 +1,141 @@
 @import "tailwindcss";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Premium Utilitarian Minimalism - Warm Bone & Editorial Charcoal */
+  --color-paper: oklch(98% 0.003 60);       /* #FBFBFA Warm Bone */
+  --color-paper-2: oklch(96% 0.004 60);     /* #F5F4F0 Secondary Warm Bone */
+  --color-paper-3: oklch(92% 0.005 60);     /* #EAEAE6 Hover/Accent Base */
+  --color-ink: oklch(18% 0.006 60);         /* #1E1E1D Editorial Charcoal */
+  --color-ink-2: oklch(35% 0.006 60);       /* #4C4C4A Secondary Text */
+  --color-rule: oklch(90% 0.004 60);        /* #E3E2DE Structural Dividers */
+  --color-muted: oklch(55% 0.005 60);       /* #7D7D7A Muted Gray */
+  
+  /* Washed-out pastel accents */
+  --color-accent: oklch(18% 0.006 60);      /* Strict monochrome contrast: charcoal */
+  --color-focus: oklch(40% 0.005 60);       /* Muted focus */
+  
+  /* Muted pastel tags for channels (Light mode) */
+  --color-pastel-red-bg: #FDEBEC;
+  --color-pastel-red-fg: #9F2F2D;
+  --color-pastel-blue-bg: #E1F3FE;
+  --color-pastel-blue-fg: #1F6C9F;
+  --color-pastel-green-bg: #EDF3EC;
+  --color-pastel-green-fg: #346538;
+  --color-pastel-yellow-bg: #FBF3DB;
+  --color-pastel-yellow-fg: #956400;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+:root.dark {
+  /* Dark Mode - Matte Off-Black & Slate Charcoal */
+  --color-paper: oklch(13% 0.004 60);       /* #131312 Matte Off-Black */
+  --color-paper-2: oklch(16% 0.005 60);     /* #1A1A19 Secondary Matte Paper */
+  --color-paper-3: oklch(21% 0.006 60);     /* #252524 Hover Surface */
+  --color-ink: oklch(96% 0.002 60);         /* #ECECEC Off-White */
+  --color-ink-2: oklch(80% 0.003 60);       /* #C4C4C2 Secondary Text */
+  --color-rule: oklch(22% 0.005 60);        /* #282827 Dark Divider */
+  --color-muted: oklch(58% 0.004 60);       /* #858582 Muted Gray */
+  
+  --color-accent: oklch(96% 0.002 60);
+  --color-focus: oklch(75% 0.003 60);
+  
+  /* Muted pastel tags for channels (Dark mode) */
+  --color-pastel-red-bg: #2C1E1E;
+  --color-pastel-red-fg: #FF8E8C;
+  --color-pastel-blue-bg: #1B262C;
+  --color-pastel-blue-fg: #7ED6FF;
+  --color-pastel-green-bg: #1C2B1E;
+  --color-pastel-green-fg: #8DDF97;
+  --color-pastel-yellow-bg: #2C2618;
+  --color-pastel-yellow-fg: #FFE39C;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@theme {
+  --color-paper: var(--color-paper);
+  --color-paper-2: var(--color-paper-2);
+  --color-paper-3: var(--color-paper-3);
+  --color-ink: var(--color-ink);
+  --color-ink-2: var(--color-ink-2);
+  --color-rule: var(--color-rule);
+  --color-muted: var(--color-muted);
+  --color-accent: var(--color-accent);
+  --color-focus: var(--color-focus);
+  
+  --color-pastel-red-bg: var(--color-pastel-red-bg);
+  --color-pastel-red-fg: var(--color-pastel-red-fg);
+  --color-pastel-blue-bg: var(--color-pastel-blue-bg);
+  --color-pastel-blue-fg: var(--color-pastel-blue-fg);
+  --color-pastel-green-bg: var(--color-pastel-green-bg);
+  --color-pastel-green-fg: var(--color-pastel-green-fg);
+  --color-pastel-yellow-bg: var(--color-pastel-yellow-bg);
+  --color-pastel-yellow-fg: var(--color-pastel-yellow-fg);
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-mono, SFMono-Regular, Roboto Mono, monospace;
+  --font-serif: var(--font-serif), Georgia, Cambria, "Times New Roman", Times, serif;
 }
 
+/* Base resets & styling */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+  background-color: var(--color-paper);
+  color: var(--color-ink-2);
+  font-family: var(--font-sans);
+  font-variant-numeric: tabular-nums;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  line-height: 1.6;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.dark {
-  --background: #0a0a0a;
-  --foreground: #ededed;
+/* Thin micro-scrollbar to align with document aesthetic */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
 }
-/* Ẩn thanh cuộn trên mọi trình duyệt phổ biến */
-::-webkit-scrollbar {
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-rule);
+  border-radius: 2px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--color-muted);
+}
+
+.no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
 
-body {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+/* Structural borders (no heavy shadows or glows) */
+.flat-border {
+  border: 1px solid var(--color-rule);
+}
+
+/* Clean, flat interactive elements */
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.flat-card {
+  border: 1px solid var(--color-rule);
+  border-radius: 8px;
+  background-color: var(--color-paper-2);
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.flat-card:hover {
+  border-color: var(--color-muted);
+  background-color: var(--color-paper-3);
+}
+
+.flat-card-active {
+  border-color: var(--color-ink);
+  background-color: var(--color-paper-3);
 }
